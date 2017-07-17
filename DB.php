@@ -5,15 +5,16 @@ class DB {
 	private $db_username = "MindaugasSimkus";
 	private $db_password = "agrastaspower";
 	private $db = "mindaugassimkus";
+	private $conn;
 
 	//prisijungiam prie db
 	function __construct() {
 		try {
 
-		    $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+		    $this->conn = new PDO("mysql:host=$this->db_hostname;dbname=$this->db", $this->db_username, $this->db_password);
 		    // set the PDO error mode to exception
-		    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		    echo "Connected successfully"; 
+		    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		    //echo "Connected successfully"; 
 		}
 		catch(PDOException $e) {
 		    echo "Connection failed: " . $e->getMessage();
@@ -23,10 +24,16 @@ class DB {
 
 	// ivykdom koda ir grazinam reiksmes
 
-
+	public function query($sql = "SELECT * FROM pages") {
+		$query = $this->conn->query($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
 
 	//atsijungiam nuo db
 	function __destruct() {
-		
+		$this->conn = null;
 	}
 }
+
