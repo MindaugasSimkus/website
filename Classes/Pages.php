@@ -14,6 +14,4 @@ class Pages {
 		return $menu;
 	}
 
-
-
 }
