@@ -1,2 +1,15 @@
-$db = new db();
-$db->sql('SELECT' * FROM pages)
+<?php
+include "Classes/DB.php";
+
+
+
+
+
+
+
+
+
+
+
+
+include "Views/main.php";
