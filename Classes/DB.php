@@ -23,10 +23,17 @@ class DB {
 	}
 	// ivykdom koda ir grazinam reiksmes
 	public function query($sql) {
+		$result = [];
 		$query = $this->conn->query($sql);
+
 		$query->execute();
 		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$result = $query->fetchAll();
+		
+		while($row = $query->fetchObject()) {
+			array_push($result, $row);
+		}
+
+
 		return $result;
 	}
 
