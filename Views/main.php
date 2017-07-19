@@ -25,12 +25,13 @@
 				<p><?= $page->body; ?></p>
 			</div>
 			<div class="col-md-4">
-				<a href=<?= "".$banners[0]->banner_link."" ?> target="_blank">
-					<img src=<?= "".$banners[0]->banner_pic."" ?> alt="Your add could be here" style="width:100%;height:300px;border:0;">
-				</a> 
-				<a href=<?= "".$banners[1]->banner_link."" ?> target="_blank">
-					<img src=<?= "".$banners[1]->banner_pic."" ?> alt="Your add could be here" style="width:100%;height:300px;border:0;">
-				</a> 
+				<?php 
+					for ($i=0; $i < count($banners); $i++) { 
+						 echo "<a href=".$banners[$i]->banner_link." target='_blank'>
+							<img src=".$banners[$i]->banner_pic." alt='Your add could be here' style='width:100%;height:400px;border:0;'>
+						</a>";
+					}
+				?> 
 			</div>			
 		</div>
 	</div>
