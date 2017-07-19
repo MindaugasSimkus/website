@@ -2,8 +2,8 @@
 
 class DB {
 	private $db_hostname = "localhost";
-	private $db_username = "root";
-	private $db_password = "";
+	private $db_username = "MindaugasSimkus";
+	private $db_password = "agrastaspower";
 	private $db = "mindaugassimkus";
 	private $conn;
 
@@ -11,7 +11,7 @@ class DB {
 	function __construct() {
 		try {
 
-		    $this->conn = new PDO("mysql:host=$this->db_hostname;dbname=$this->db", $this->db_username, $this->db_password);
+		    $this->conn = new PDO("mysql:host=$this->db_hostname;dbname=$this->db; charset=utf8", $this->db_username, $this->db_password);
 		    // set the PDO error mode to exception
 		    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		    //echo "Connected successfully"; 
